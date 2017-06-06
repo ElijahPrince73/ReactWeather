@@ -24858,6 +24858,7 @@
 
 	var React = __webpack_require__(1);
 	var Nav = __webpack_require__(217);
+
 	var Main = React.createClass({
 	  displayName: 'Main',
 
@@ -24908,14 +24909,14 @@
 	        'Get Weather'
 	      ),
 	      React.createElement(
-	        IndexLink,
-	        { to: 'about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	        ' About'
+	        Link,
+	        { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	        'About'
 	      ),
 	      React.createElement(
-	        IndexLink,
-	        { to: 'example', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	        ' Examples '
+	        Link,
+	        { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	        'Examples'
 	      )
 	    );
 	  }
@@ -24936,20 +24937,34 @@
 	var Weather = React.createClass({
 	  displayName: 'Weather',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      location: 'Miami',
+	      temp: 88
+	    };
+	  },
 	  handleSearch: function handleSearch(location) {
-	    alert(location);
+	    this.setState({
+	      location: location,
+	      temp: 23
+	    });
 	  },
 	  render: function render() {
+	    var _state = this.state,
+	        temp = _state.temp,
+	        location = _state.location;
+
+
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'h3',
 	        null,
-	        ' Weather Component'
+	        'Weather Component'
 	      ),
 	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-	      React.createElement(WeatherMessage, null)
+	      React.createElement(WeatherMessage, { temp: temp, location: location })
 	    );
 	  }
 	});
@@ -24972,7 +24987,7 @@
 
 	    var location = this.refs.location.value;
 
-	    if (location.lenght > 0) {
+	    if (location.length > 0) {
 	      this.refs.location.value = '';
 	      this.props.onSearch(location);
 	    }
@@ -25009,10 +25024,19 @@
 	  displayName: 'WeatherMessage',
 
 	  render: function render() {
+	    var _props = this.props,
+	        temp = _props.temp,
+	        location = _props.location;
+
+
 	    return React.createElement(
 	      'h3',
 	      null,
-	      'It is 40 in Las Vegas'
+	      'It\'s it ',
+	      temp,
+	      ' in ',
+	      location,
+	      '.'
 	    );
 	  }
 	});
@@ -25034,7 +25058,7 @@
 	    return React.createElement(
 	      'h3',
 	      null,
-	      ' About Component'
+	      'About Component'
 	    );
 	  }
 	});
