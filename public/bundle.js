@@ -25520,6 +25520,7 @@
 
 	    this.setState({ isLoading: true });
 
+	    debugger;
 	    openWeatherMap.getTemp(location).then(function (temp) {
 	      that.setState({
 	        location: location,
@@ -25527,6 +25528,7 @@
 	        isLoading: false
 	      });
 	    }, function (errorMessage) {
+	      that.setState({ isLoading: false });
 	      alert(errorMessage);
 	    });
 	  },
