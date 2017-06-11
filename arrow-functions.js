@@ -1,4 +1,4 @@
-names = ['bill', 'jill', 'luke'];
+// names = ['bill', 'jill', 'luke'];
 // name.forEach(function (name) {
 // console.log('forEach', name);
 // })
