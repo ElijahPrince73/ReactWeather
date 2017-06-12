@@ -25439,7 +25439,7 @@
 	    React.createElement(
 	      'h2',
 	      null,
-	      'Main Component'
+	      'Main Components'
 	    ),
 	    props.children
 	  );
@@ -26772,7 +26772,7 @@
 	  return React.createElement(
 	    'h3',
 	    null,
-	    'Examples Component'
+	    'Examples'
 	  );
 	};
 
