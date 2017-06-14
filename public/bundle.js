@@ -26864,19 +26864,66 @@
 
 	var React = __webpack_require__(8);
 
+	var _require = __webpack_require__(166),
+	    Link = _require.Link;
+
 	var About = function About(props) {
 	  return React.createElement(
 	    'div',
-	    null,
+	    { className: 'row' },
 	    React.createElement(
-	      'h3',
-	      null,
-	      'About '
-	    ),
-	    React.createElement(
-	      'p',
-	      null,
-	      'This is the about page'
+	      'div',
+	      { className: 'column' },
+	      React.createElement(
+	        'div',
+	        { className: 'text-center' },
+	        React.createElement(
+	          'h1',
+	          null,
+	          'About '
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          'This is a weather application using React'
+	        )
+	      ),
+	      React.createElement(
+	        'p',
+	        null,
+	        'Tools Used:'
+	      ),
+	      React.createElement(
+	        'ul',
+	        null,
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: 'https://github.com/ElijahPrince73/ReactWeather' },
+	            ' code'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: 'https://facebook.github.io/react/' },
+	            'Javascript Framwork used'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: 'https://openweathermap.org/' },
+	            'Open Weather Map to to search for weather data'
+	          )
+	        )
+	      )
 	    )
 	  );
 	};
