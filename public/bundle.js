@@ -25530,9 +25530,15 @@
 
 	  onSearch: function onSearch(e) {
 	    e.preventDefault();
-	    alert("Not Yet Wired Up");
-	  },
 
+	    var location = this.refs.search.value;
+	    var encodedLocation = encodeURIComponent(location);
+
+	    if (location.length > 0) {
+	      this.refs.search.value = '';
+	      window.location.hash = '#/?location=' + encodedLocation;
+	    }
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -25546,7 +25552,7 @@
 	          React.createElement(
 	            'li',
 	            { className: 'menu-text' },
-	            'React Weather'
+	            'React Weather App'
 	          ),
 	          React.createElement(
 	            'li',
@@ -25563,7 +25569,7 @@
 	            React.createElement(
 	              Link,
 	              { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	              ' About'
+	              'About'
 	            )
 	          ),
 	          React.createElement(
@@ -25572,7 +25578,7 @@
 	            React.createElement(
 	              Link,
 	              { to: '/examples', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	              ' Examples'
+	              'Examples'
 	            )
 	          )
 	        )
@@ -25589,7 +25595,7 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement('input', { type: 'search', placeholder: 'Search Weather by City' })
+	              React.createElement('input', { type: 'search', placeholder: 'Search weather by city', ref: 'search' })
 	            ),
 	            React.createElement(
 	              'li',
@@ -25630,7 +25636,9 @@
 
 	    this.setState({
 	      isLoading: true,
-	      errorMessage: undefined
+	      errorMessage: undefined,
+	      location: undefined,
+	      temp: undefined
 	    });
 
 	    openWeatherMap.getTemp(location).then(function (temp) {
@@ -25645,6 +25653,22 @@
 	        errorMessage: e.message
 	      });
 	    });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var location = this.props.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+	    var location = newProps.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
 	  },
 	  render: function render() {
 	    var _state = this.state,
