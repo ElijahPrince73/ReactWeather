@@ -6,7 +6,7 @@ var About = (props) => {
     <div className='row'>
       <div className='column'>
         <div className='text-center'>
-          <h1>About </h1>
+          <h1 className="page-title">About </h1>
           <p>This is a weather application using React</p>
 
         </div>
